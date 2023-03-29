@@ -2,38 +2,45 @@ import java.io.IOException;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Razminka {
         public static void main(String[] args) {
-        // 5. Напишите программу Java, которая принимает два числа в качестве входных данных и отображает произведение двух чисел.
+        /*
+Напишите программу на Java, чтобы добавить два двоичных числа. Перейти к редактору
+Входные данные:
+Введите первое двоичное число: 10
+Введите второе двоичное число: 11
+Ожидаемый результат
 
-        Scanner console = new Scanner(System.in);
-        System.out.println("введите сумму с НДС");
-        double number1 = console.nextDouble();
-        double nds = 1.2;
-        System.out.println("Сумма без НДС");
-        double otvet = number1/nds;
+ Сумма двух двоичных чисел: 101
+        */
+        int a = 5;
+        int b = 13;
+                System.out.println(a + " " + b);
 
-        //Вариант 1, с некоректным ответом типа 0,999999
-        System.out.println(otvet);
-
-        //Вариант 2, с верным округлением до 2 знаков после запятой, 2 знака будут всегда.
-        System.out.format("%.2f",otvet);
-        System.out.println();
-
-        //Вариант 3, с верным округлением, не печатает дробную часть если там нули. Пример 34 вместо 34,00
-        double value = otvet;
-        DecimalFormat decimalFormat = new DecimalFormat( "#.##" );
-        String result = decimalFormat.format(value);
-        System.out.println(result);
-
-        System.out.println("проверка математики");
-                System.out.println (19 % 12);
-                System.out.println (19 % -12);
+        int temp = a;
+        a = b;
+        b = temp;
+                System.out.println(a + " " + b);
 
 
 
-    }
+
+//                Scanner console = new Scanner(System.in);
+//                System.out.println("введите первое число ");
+//                Double num1 = console.nextDouble();
+//                System.out.println("введите второе число ");
+//                Double num2 = console.nextDouble();
+//
+//
+//                System.out.print("Площадь " + num1 + " * " + num2 + " = ");
+//                double value = num1*num2;
+//                System.out.printf("%.2f", value);
+//                System.out.println("Периметр 2 * (" + num1 + " + " + num2 + ") = " + 2*(num1+num2));
+
+        }
+
 }
 
 
