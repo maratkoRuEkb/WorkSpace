@@ -36,38 +36,37 @@ public class Proba2 {
         public void actionPerformed(ActionEvent e) {
             //пишем что произойдет при нажатии кнопки
             //берем сумму из текстового поля и делаем расчет
-            parsingText (valueText.getText()); //получаем дабл из текстового поля
+            parsingText (valueText.getText()); //в методе получаем дабл из текстового поля
             summaBezNds = summaSNds/1.2;
-            System.out.println("получена сумма с НДС "+summaSNds);
-            System.out.println("получена сумма без НДС "+summaBezNds);
+            //тут преобразуем в стринг с верным округлением
+
+            String RoundedSummaSNds = String.format("%.2f",summaSNds);
+            String RoundedSummaBezNds = String.format("%.2f",summaBezNds);
+            //Проверки
+            System.out.println("получена сумма с НДС "+RoundedSummaSNds);
+            System.out.println("получена сумма без НДС "+RoundedSummaBezNds);
             //в цикле переписываем массив со сдвигом вниз на строку и записываем новые данные
-            data [4] [0] = data [3] [0];
-            data [4] [1] = data [3] [1];
+            for (int i = 4; i >0 ; i--) {
+                int y = i-1;
+                data [i] [0] = data [i-1] [0];
+                data [i] [1] = data [i-1] [1];
+            }
+            data [0] [0] = RoundedSummaSNds;
+            data [0] [1] = RoundedSummaBezNds;
 
-            data [3] [0] = data [2] [0];
-            data [3] [1] = data [2] [1];
-
-            data [2] [0] = data [1] [0];
-            data [2] [1] = data [1] [1];
-
-            data [1] [0] = data [0] [0];
-            data [1] [1] = data [0] [1];
-
-            data [0] [0] = summaSNds;
-            data [0] [1] = summaBezNds;
-
-//
+/*
 //            data [0] [0]; data [0] [1]
 //            data [1] [0]; data [1] [1]
 //            data [2] [0]; data [2] [1]
 //            data [3] [0]; data [3] [1]
 //            data [4] [0]; data [4] [1]
 //
-            System.out.println("1 строка " + data[0][0] + ", "+ data [0] [1]);
-            System.out.println("2 строка " + data[1][0] + ", "+ data [1] [1]);
-            System.out.println("3 строка " + data[2][0] + ", "+ data [2] [1]);
-            System.out.println("4 строка " + data[3][0] + ", "+ data [3] [1]);
-            System.out.println("5 строка " + data[4][0] + ", "+ data [4] [1]);
+*/
+            //вывожу проверку в терминал в цикле
+            for (int i = 0; i <= 4; i++) {
+                int y = i+1;
+                System.out.println(y + " строка " + data[i][0] + ", "+ data [i] [1]);
+            }
 
             //обновляем фрейм таблицы
             downPanel.repaint(); // ПЕРЕРИСОВАТЬ нижнюю панель. работает
