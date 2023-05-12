@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //charset UTF-8
+//version 0.21
 
 public class Proba2 {
     static double summaSNds = 0.0;
@@ -21,13 +22,21 @@ public class Proba2 {
     hightPanel.add(button1);
 
     //делаем нижнюю таблицу
-    JPanel downPanel = new JPanel();
-
+    JPanel downPanel = new JPanel(); //нижняя панель, на ней будет таблица
     JTable table2 = new JTable(data, columnNames);// создаем таблицу JTable и передаем в нее данные
-    downPanel.add(table2);//дабавляем таблицу
+
+    JScrollPane scrollPane = new JScrollPane(table2); //создаем область прокрутки и добавляем в нее нашу таблицу
+    table2.setFillsViewportHeight(true);
+
+    //scrollPane.setSize(200, 200);
+    downPanel.add(scrollPane);//добавляем таблицу
+
 
     frame.getContentPane().add(BorderLayout.NORTH, hightPanel);
     frame.getContentPane().add(BorderLayout.CENTER, downPanel);
+        //scrollPane.setPreferredSize(new Dimension(300, 200));
+        //frame.revalidate();
+    frame.pack();//пересобирает фрэйм с актуальными размерами
     frame.setVisible(true);
 
     button1.addActionListener(new ActionListener() {
