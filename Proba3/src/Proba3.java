@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 //С кодировками все хорошо
 //исправил размеры окна таблицы и переделал вывод в терминал с русских на английский язык.
 
-public class Proba2 {
+public class Proba3 {
     static double summaSNds = 0.0;
     static double summaBezNds = 0.0;
 
@@ -94,7 +94,7 @@ public class Proba2 {
     }
 
     public static void main(String[] args) {
-        Proba2 Proba2 = new Proba2();
+        Proba3 Proba3 = new Proba3();
         Object[][] data = new Object[5][2];
         Object[] columnNames = {"С НДС", "Без НДС"};
 
