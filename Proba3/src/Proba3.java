@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //charset UTF-8
-//version 0.22
-//С кодировками все хорошо
-//исправил размеры окна таблицы и переделал вывод в терминал с русских на английский язык.
+//version 0.23
+//Кракозябры в терминале
+//переделал слушателей кнопки и текстового поля, теперь по нажатию Энтер все работает
 
 public class Proba3 {
     static double summaSNds = 0.0;
@@ -38,10 +38,9 @@ public class Proba3 {
         frame.pack();//пересобирает фрэйм с актуальными размерами
         frame.setVisible(true);
 
-        button1.addActionListener(new ActionListener() {
+        Action action = new AbstractAction() { //создаем объект который будет делать расчет
             @Override
             public void actionPerformed(ActionEvent e) {
-                //пишем что произойдет при нажатии кнопки
                 //берем сумму из текстового поля и делаем расчет
                 parsingText(valueText.getText()); //в методе получаем дабл из текстового поля
                 summaBezNds = summaSNds / 1.2;
@@ -61,14 +60,6 @@ public class Proba3 {
                 data[0][0] = RoundedSummaSNds;
                 data[0][1] = RoundedSummaBezNds;
 
-/*
-//            data [0] [0]; data [0] [1]
-//            data [1] [0]; data [1] [1]
-//            data [2] [0]; data [2] [1]
-//            data [3] [0]; data [3] [1]
-//            data [4] [0]; data [4] [1]
-//
-*/
                 //вывожу проверку в терминал в цикле
                 for (int i = 0; i <= 4; i++) {
                     int y = i + 1;
@@ -81,7 +72,9 @@ public class Proba3 {
                 System.out.println("OK");
                 System.out.println("Кракозябр нет, KODIROVKA FAULT");
             }
-        });//конец addActionListener
+        }; //конец метода action
+        valueText.addActionListener(action);  //прикрепляем слушателя к текстовому полю
+        button1.addActionListener(action); //прикрепляем слушателя к кнопке
     }// конец метода startGUI
 
     static void parsingText(String text) {
@@ -91,16 +84,14 @@ public class Proba3 {
         } catch (NumberFormatException e) {
             System.err.println("Incorrect string format!");
         }// конец метода try
-    }
+    }// конец parsingText
 
     public static void main(String[] args) {
         Proba3 Proba3 = new Proba3();
         Object[][] data = new Object[5][2];
         Object[] columnNames = {"С НДС", "Без НДС"};
-
         startGUI(data, columnNames); //запускаем ГУИ
-
         System.out.println("Programm start");
     }//конец main
 
-}
+}// конец класса

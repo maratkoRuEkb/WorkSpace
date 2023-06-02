@@ -79,7 +79,7 @@ public class Proba2 {
                 scrollPane.repaint();//ПЕРЕРИСОВАТЬ нижнюю панель. работает
 
                 System.out.println("OK");
-                System.out.println("Кракозябр нет, KODIROVKA FAULT");
+                System.out.println("Кракозябр нету, KODIROVKA FAULT");
             }
         });//конец addActionListener
     }// конец метода startGUI
