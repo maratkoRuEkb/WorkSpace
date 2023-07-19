@@ -1,97 +1,97 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Scanner;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+//charset UTF-8
+//version 0.23
+//РљСЂР°РєРѕР·СЏР±СЂС‹ РІ С‚РµСЂРјРёРЅР°Р»Рµ
+//РїРµСЂРµРґРµР»Р°Р» СЃР»СѓС€Р°С‚РµР»РµР№ РєРЅРѕРїРєРё Рё С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕР»СЏ, С‚РµРїРµСЂСЊ РїРѕ РЅР°Р¶Р°С‚РёСЋ Р­РЅС‚РµСЂ РІСЃРµ СЂР°Р±РѕС‚Р°РµС‚
 
+public class ConverterNDS {
+    static double summaSNds = 0.0;
+    static double summaBezNds = 0.0;
 
-public class ConverterNDS  {
-    private Object nds;
-
-    public static void main(String[] args) {
-        ConverterNDS  Converter = new ConverterNDS();
-        Converter.go();
-        double nds = 1.2;
-        //данные нужно будет хранить в связном списке
-
-
-
-
-
-        /
-
-    }//конец main
-
-    ActionListener reshit = new ActionListener()
-    //метод расчета
-    public double setOtvet() { 
-        
-        double otvet = number1/nds;
-        double number1;
-        String textNum= value.getText(); //получили цифру в виде текста надо привести его к Дабл
-        try {
-            number1 = Integer.doubleValue(textNum);
-            System.out.println(number1);
-        } catch (NumberFormatException e) {
-            System.err.println("Неправильный формат строки!");
-        }
-
-    }
-
-
-    
-
-    public void go () { //метод создающий интерфейс
-        JFrame frame = new JFrame("Конвертер НДС");
+    static void startGUI(Object data[][], Object columnNames[]) {//СЃРѕР·РґР°РЅРёРµ GUI
+        JFrame frame = new JFrame("Р’С‹С‡РёСЃР»РёС‚РµР»СЊ Р±РµР· РќР”РЎ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300,300);
+        frame.setSize(300, 300);  //СЂР°Р·РјРµСЂ РѕРєРЅР°
 
-        //делаем верхнюю панель ГОТОВО
-        JTextField value = new JTextField(10);// поле для ввода числа
-        //
-
-
-
-        JButton button1 = new JButton("Вычислить");// кнопка запуска
-        button1.addActionListener(new ButtonStart());
-
+        //РґРµР»Р°РµРј РІРµСЂС…РЅСЋСЋ РїР°РЅРµР»СЊ
+        JTextField valueText = new JTextField(10);// РїРѕР»Рµ РґР»СЏ РІРІРѕРґР° С‡РёСЃР»Р°
+        JButton button1 = new JButton("Р’С‹С‡РёСЃР»РёС‚СЊ");// РєРЅРѕРїРєР° Р·Р°РїСѓСЃРєР°
         JPanel hightPanel = new JPanel();
-        hightPanel.add(value);
+        hightPanel.add(valueText);
         hightPanel.add(button1);
 
+        //РґРµР»Р°РµРј РЅРёР¶РЅСЋСЋ РїР°РЅРµР»СЊ Рё С‚Р°Р±Р»РёС†Сѓ
+        JTable table2 = new JTable(data, columnNames);// СЃРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ JTable Рё РїРµСЂРµРґР°РµРј РІ РЅРµРµ РґР°РЅРЅС‹Рµ
 
+        JScrollPane scrollPane = new JScrollPane(table2); //СЃРѕР·РґР°РµРј РѕР±Р»Р°СЃС‚СЊ РїСЂРѕРєСЂСѓС‚РєРё Рё РґРѕР±Р°РІР»СЏРµРј РІ РЅРµРµ РЅР°С€Сѓ С‚Р°Р±Р»РёС†Сѓ
+        table2.setFillsViewportHeight(true); //true, С‚Р°Р±Р»РёС†Р° РёСЃРїРѕР»СЊР·СѓРµС‚ РІСЃСЋ РІС‹СЃРѕС‚Сѓ РєРѕРЅС‚РµР№РЅРµСЂР°, РґР°Р¶Рµ РµСЃР»Рё РІ С‚Р°Р±Р»РёС†Рµ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃС‚СЂРѕРє, С‡С‚РѕР±С‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІСЃРµ РІРµСЂС‚РёРєР°Р»СЊРЅРѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ.
 
-        //делаем нижнюю таблицу
-        JPanel downPanel = new JPanel();
-        JTable  table = new JTable (5,2);
-        downPanel.add(table);
+        //СЂР°Р·РјРµС‰Р°РµРј РІРµСЂС…РЅСЋСЋ Рё РЅРёР¶РЅСЋСЋ РїР°РЅРµР»СЊ РЅР° С„СЂРµР№РјРµ
         frame.getContentPane().add(BorderLayout.NORTH, hightPanel);
+        frame.getContentPane().add(BorderLayout.CENTER, scrollPane);
 
-        //делаем таблицу
-        frame.getContentPane().add(BorderLayout.CENTER, downPanel);
+        scrollPane.setPreferredSize(new Dimension(300, 105));// СЃРєСЂРѕР»РїР°РЅРµР»Рё Р·Р°РґР°РµРј РїСЂРµРґРїРѕС‡РёС‚Р°РµРјС‹Р№ СЂР°Р·РјРµСЂ
+
+        frame.pack();//РїРµСЂРµСЃРѕР±РёСЂР°РµС‚ С„СЂСЌР№Рј СЃ Р°РєС‚СѓР°Р»СЊРЅС‹РјРё СЂР°Р·РјРµСЂР°РјРё
         frame.setVisible(true);
-        //как заполнять таблицу данными???
 
+        Action action = new AbstractAction() { //СЃРѕР·РґР°РµРј РѕР±СЉРµРєС‚ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РґРµР»Р°С‚СЊ СЂР°СЃС‡РµС‚
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Р±РµСЂРµРј СЃСѓРјРјСѓ РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕР»СЏ Рё РґРµР»Р°РµРј СЂР°СЃС‡РµС‚
+                parsingText(valueText.getText()); //РІ РјРµС‚РѕРґРµ РїРѕР»СѓС‡Р°РµРј РґР°Р±Р» РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕР»СЏ
+                summaBezNds = summaSNds / 1.2;
+                //С‚СѓС‚ РїСЂРµРѕР±СЂР°Р·СѓРµРј РІ СЃС‚СЂРёРЅРі СЃ РІРµСЂРЅС‹Рј РѕРєСЂСѓРіР»РµРЅРёРµРј
 
-    }// конец метода go
+                String RoundedSummaSNds = String.format("%.2f", summaSNds);
+                String RoundedSummaBezNds = String.format("%.2f", summaBezNds);
+                //РџСЂРѕРІРµСЂРєРё
+                System.out.println("amount received with NDS " + RoundedSummaSNds);
+                System.out.println("amount received without NDS " + RoundedSummaBezNds);
+                //РІ С†РёРєР»Рµ РїРµСЂРµРїРёСЃС‹РІР°РµРј РјР°СЃСЃРёРІ СЃРѕ СЃРґРІРёРіРѕРј РІРЅРёР· РЅР° СЃС‚СЂРѕРєСѓ Рё Р·Р°РїРёСЃС‹РІР°РµРј РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ
+                for (int i = 4; i > 0; i--) {
+                    int y = i - 1;
+                    data[i][0] = data[i - 1][0];
+                    data[i][1] = data[i - 1][1];
+                }
+                data[0][0] = RoundedSummaSNds;
+                data[0][1] = RoundedSummaBezNds;
 
-    //тут можно делать внутренний класс
-class ButtonStart implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
+                //РІС‹РІРѕР¶Сѓ РїСЂРѕРІРµСЂРєСѓ РІ С‚РµСЂРјРёРЅР°Р» РІ С†РёРєР»Рµ
+                for (int i = 0; i <= 4; i++) {
+                    int y = i + 1;
+                    System.out.println(y + " line " + data[i][0] + ", " + data[i][1]);
+                }
 
-            double column = e.getColumns();
-            //тут надо написать действие что будет происходить при нажатии кнопки ЗАПУСКАЕТ МЕТОД
-            //1.вводим в текстовое поле цифру
-            //2. нажимаем кнопку, берется цифра, проводится расчет
-            //3, результат передается в таблицу, результат выводится в таблице
+                //РѕР±РЅРѕРІР»СЏРµРј С„СЂРµР№Рј С‚Р°Р±Р»РёС†С‹
+                scrollPane.repaint();//РџР•Р Р•Р РРЎРћР’РђРўР¬ РЅРёР¶РЅСЋСЋ РїР°РЅРµР»СЊ. СЂР°Р±РѕС‚Р°РµС‚
 
-        }
-    }// конец класса ButtonStart
+                System.out.println("OK");
+                System.out.println("РљСЂР°РєРѕР·СЏР±СЂ РЅРµС‚, KODIROVKA FAULT");
+            }
+        }; //РєРѕРЅРµС† РјРµС‚РѕРґР° action
+        valueText.addActionListener(action);  //РїСЂРёРєСЂРµРїР»СЏРµРј СЃР»СѓС€Р°С‚РµР»СЏ Рє С‚РµРєСЃС‚РѕРІРѕРјСѓ РїРѕР»СЋ
+        button1.addActionListener(action); //РїСЂРёРєСЂРµРїР»СЏРµРј СЃР»СѓС€Р°С‚РµР»СЏ Рє РєРЅРѕРїРєРµ
+    }// РєРѕРЅРµС† РјРµС‚РѕРґР° startGUI
 
+    static void parsingText(String text) {
+        String str2 = text;
+        try {
+            summaSNds = Double.parseDouble(str2);
+        } catch (NumberFormatException e) {
+            System.err.println("Incorrect string format!");
+        }// РєРѕРЅРµС† РјРµС‚РѕРґР° try
+    }// РєРѕРЅРµС† parsingText
 
-}// конец класса ConverterNDS
+    public static void main(String[] args) {
+        ConverterNDS ConverterNDS = new ConverterNDS();
+        Object[][] data = new Object[5][2];
+        Object[] columnNames = {"РЎ РќР”РЎ", "Р‘РµР· РќР”РЎ"};
+        startGUI(data, columnNames); //Р·Р°РїСѓСЃРєР°РµРј Р“РЈР
+        System.out.println("Programm start");
+    }//РєРѕРЅРµС† main
 
-
-
-
-
+}// РєРѕРЅРµС† РєР»Р°СЃСЃР°
