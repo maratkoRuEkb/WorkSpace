@@ -1,9 +1,9 @@
 import java.io.InputStream;
 import java.util.Scanner;
 
-public class ExercisesMini {
+public class Zadanie5 {
     /*
-    решаю задачу 5
+    Задание 5 - ВЫПОЛНЕНО
     Напишите программу Java, которая принимает два числа в качестве входных данных и отображает произведение двух чисел.
         Тестовые данные:
     Введите первое число: 25
