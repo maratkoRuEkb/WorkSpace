@@ -16,6 +16,7 @@ public class Zadanie19 {
         System.out.print("Введите десятичное число: ");
         int a = scaner.nextInt();
 
+        //--------------- первый вариант
         String s = Integer.toBinaryString(a);
         System.out.println("Двоичный номер: "+s);
         //--------------- второй вариант
