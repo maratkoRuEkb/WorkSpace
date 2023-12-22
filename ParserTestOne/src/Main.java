@@ -1,15 +1,22 @@
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
+/*
+- выводит в терминал страницу сайта
+- оформить в методы:
+   1)
+- надо чтобы вывел все страницы сайта (сделать в цикле запрос в глубину)
+- надо сделать форматирование текста (вставить разделители таблицы) цикл со счетчиком 3 (три €чейки соедин€ем
+- сделать сохранение в файлик
+ */
 
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Start");
-        Document document = null;
-
-        try{
+        Document document = null; //тут будет сохранена страница сайта
+        //--------------
+        try{// пробуем получить страницу сайта
             System.out.println("sending a request / отправл€ем запрос");
             document = Jsoup.connect("https://easyoffer.ru/rating/android_developer")
                     .userAgent("Chrome/4.0.249.0 Safari/532.5").referrer("http://www.google.com")
@@ -18,15 +25,23 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //System.out.println(document.toString()); //вывод всего содержимого сайта
-        //Elements tr = document.select("tr") ; //вывод по тэгу <tr> сайта
 
-//        for (Element element : document.select("tr")){ //построчно выдергивает содержимое
-//            System.out.println(element.text());
-//        }
-        for (Element element : document.select("td")){ //выдергивает каждую €чейку
+
+        // сделать метод получени€ €чейки из документа, через return
+        for (Element element : document.select("td")){ //выдергивает и печатает в терминал каждую €чейку
             System.out.println(element.text());
         }
+
+
+
+        //тут сделать метод который вернет строку из 3 €чеек
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < fields.length; i++) {
+            s.append(fields[i]);
+        }
+        return s.toString();
+
+
 
         System.out.println("End");
     }
