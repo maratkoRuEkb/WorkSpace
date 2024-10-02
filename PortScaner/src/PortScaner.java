@@ -14,7 +14,7 @@ public class PortScaner {
 
     public static void main(String[] args) {
 
-        scan("easyoffer.ru");//вызываем метод scan и передаем ему адрес сканируемого ресурса
+        scan("bumprodukciya.ru");//вызываем метод scan и передаем ему адрес сканируемого ресурса
     }
 
     private static void scan(String host) {//метод scan принимает адрес в переменную host
