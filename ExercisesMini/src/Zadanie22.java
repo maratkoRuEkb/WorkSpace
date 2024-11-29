@@ -15,7 +15,7 @@ public class Zadanie22 {
         int number = scanner.nextInt();
         String str = Integer.toString(number); //преобразуем двоичное число в строку
 
-        System.out.println("Двоичное число: ");
+        System.out.println("Десятичное число: ");
         /* parseInt - принимает два параметра на вход, двоичную строку и
          основание системы счисления, в которую должна быть преобразована входная строка */
         int b = Integer.parseInt(str, 2);
