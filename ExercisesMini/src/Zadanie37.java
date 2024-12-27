@@ -1,5 +1,5 @@
 /*
-Задание 37 - НЕ ВЫПОЛНЕНО
+Задание 37 - ВЫПОЛНЕНО
 Напишите программу на Java для обращения строки.
 Входные данные:
 Введите строку: The quick brown fox
@@ -15,13 +15,13 @@ public class Zadanie37 {
         System.out.println("Введите строку: ");
         String str = scanner.nextLine();
 
-        //через StringBuilder
+        // 1 - через StringBuilder
         System.out.println("Обратная строка через StringBuilder: " + new StringBuilder(str).reverse().toString());
 
-        //через массив
+        // 2 - через массив
         System.out.println("Обратная строка через массив: " + reverseString(str));
     }
-    public static String reverseString(String s){
+    public static String reverseString(String s){ //сам метод через массив
         char [] array = s.toCharArray(); //строку преобразуем в массив символов
         String result = "";
         for (int i = array.length-1; i >= 0;  i--) {
