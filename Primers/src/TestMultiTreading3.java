@@ -1,0 +1,2 @@
+public class TestMultiTreading3 {
+}
