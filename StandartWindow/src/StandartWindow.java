@@ -10,5 +10,7 @@ public class StandartWindow {
         mainWindow.setResizable(false); //неизменяемый размер окна
         mainWindow.setLocationRelativeTo(null); //окно - в центре экрана
         mainWindow.setVisible(true);
+
+
     }
 }

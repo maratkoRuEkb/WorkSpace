@@ -30,6 +30,21 @@ public class MainWindow extends JFrame {
         buttonsPanel.add(start);
         buttonsPanel.add(stop);
         getContentPane().add(BorderLayout.NORTH, buttonsPanel);
+
+        JLabel label = new JLabel("Nintendo");
+        label.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.GREEN, 2), "Frame Title"),
+                BorderFactory.createEmptyBorder(5,10,10,10)));
+        // Используем составную рамку:
+        //   1. всё та же обводка зелёного цвета с толщиной линии в 2 пикселя
+        //   2. дополнительно добавлен заголовок
+        //   3. пустая(невидимая рамка) для отступа в 25 пикселей от каждой стороны панели
+
+        JPanel panel = new JPanel();// панель для размещения
+        panel.add(label);
+        getContentPane().add(BorderLayout.CENTER, panel);
+
     }//end constructor
 
     private class ButtonsListener implements ActionListener{
