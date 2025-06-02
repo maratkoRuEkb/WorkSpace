@@ -1,8 +1,6 @@
 package org.example;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -25,16 +23,17 @@ public class App
         Scanner scanner = null;
         int count = 0; // счетчик строк
 
-        try(FileInputStream fin=new FileInputStream("c:\\Users\\Tetragon10\\Documents\\база паролей combined\\combined.txt")){
-            int i=-1;
-            while(условие){
-                System.out.print((char)i);
+        /* тут подсчитал кол-во строк в файле РАБОТАЕТ за минуту выдал 955742503 строк
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                count++;
             }
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("Количество строк в файле: " + count); // 955742503 строк
+        } catch (IOException e) {
+            System.err.println("Ошибка при чтении файла: " + e.getMessage());
         } //конец try
-
+        */
 
         //System.out.println(sourcePath.getFileName());
     }
