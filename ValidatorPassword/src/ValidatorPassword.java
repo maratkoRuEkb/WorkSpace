@@ -9,25 +9,30 @@
 
 public class ValidatorPassword {
     public static void main(String[] args) {
-        String password = "1235ghj";
+        String password = "123!!5gапh^j";
         //потом можно заменить на ввод с терминала
 
-        StatusPass sp = StatusPass.BAD; //это временная заглушка, статус должен в Инспекторе присваиваться и возвращать стринг sp
+
+
+
+        StatusPass sp = InspectorPass.checkPassword(password);
 
         switch (sp){
             case BAD:
                 System.out.println("ваш пароль плохой");
                 break;
             case WEAK:
-                System.out.println("ваш пароль плохой");
+                System.out.println("ваш пароль слабый");
                 break;
             case NORMAL:
-                System.out.println("ваш пароль плохой");
+                System.out.println("ваш пароль нормальный");
                 break;
             case STRONG:
-                System.out.println("ваш пароль плохой");
+                System.out.println("ваш пароль сильный");
                 break;
-        }
+        }// end switch
 
     }
+
+
 }
