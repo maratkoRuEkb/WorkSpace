@@ -4,6 +4,9 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class InspectorPass  {
@@ -23,7 +26,7 @@ public class InspectorPass  {
             return StatusPass.WEAK;
         }
         //проверка на часто повторяющиеся (3 и более раз) символы
-        if (метод) {//сли придет тру то есть 3 и более повтора
+        if (passwordRepeatedCharactersCheck(password)) {//сли придет тру то есть 3 и более повтора
             return StatusPass.WEAK;
         }
 
@@ -37,7 +40,7 @@ public class InspectorPass  {
 
     }// end checkPassword
 
-    private static boolean passwordForbidenListCheck(String password) {//вернем тру если пароль в списке известных паролей
+    private static boolean passwordForbidenListCheck(String passwordForbList) {//вернем тру если пароль в списке известных паролей
         Scanner scan;
         try {
             scan = new Scanner(new File("resources/forbidden_passwords_10k.txt"));
@@ -47,7 +50,7 @@ public class InspectorPass  {
 
         while (scan.hasNext()){//пока есть еще слово
             String checkedWord = scan.next();
-            if (checkedWord.equals(password)){
+            if (checkedWord.equals(passwordForbList)){
                 return true;
             }
         }//end while
@@ -55,14 +58,24 @@ public class InspectorPass  {
 
     }//end passwordForbidenListCheck
 
+        //не сделан
     private static boolean passwordNormalCheck(String passNormal) {
         //пишем код
         return true;
     }
+        //проверка на повторяющиеся подряд символы
+    private static boolean passwordRepeatedCharactersCheck(String passRepeat) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < passRepeat.length(); i++) {
+            char ch = passRepeat.charAt(i);
+            map.merge(ch, 1, Integer::sum);
+        }
 
-    private static boolean passwordWeakCheck(String passWeak) {
-        //пишем код
-        return true;
+        if (Collections.max(map.values()) >= 3) {
+            return true; //сли тру то есть 3 и более повтора, слабый пароль
+        } else {
+            return false;
+        }
     }
 
     private static boolean passwordBadCheck(String passBad){ //вернем тру если пароль плохой
