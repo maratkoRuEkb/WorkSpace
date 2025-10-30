@@ -21,7 +21,7 @@ public class InspectorPass  {
         if (passwordForbidenListCheck(password)) {//сли придет тру то пароль есть в списке 10к самых простых паролей
             return StatusPass.WEAK;
         }
-        //проверка на наличие англ букв, если их нету то пароль слабый
+        //проверка на наличие англ букв, если их нету то пароль слабый - ГОТОВО
         if (password.replaceAll("[^a-zA-Z]", "").equals("")) { //все НЕ английские буквы убираем, сравниваем с ничем, если тру то англ букв нет вообще а это слабый пароль
             return StatusPass.WEAK;
         }
@@ -29,8 +29,6 @@ public class InspectorPass  {
         if (passwordRepeatedCharactersCheck(password)) {//сли придет тру то есть 3 и более повтора
             return StatusPass.WEAK;
         }
-
-
         if (passwordNormalCheck(password)) { //сли придет тру то пароль нормальный
             return StatusPass.NORMAL;
         }
@@ -39,7 +37,7 @@ public class InspectorPass  {
         }
 
     }// end checkPassword
-
+    //метод passwordForbidenListCheck ГОТОВ
     private static boolean passwordForbidenListCheck(String passwordForbList) {//вернем тру если пароль в списке известных паролей
         Scanner scan;
         try {
@@ -58,7 +56,7 @@ public class InspectorPass  {
 
     }//end passwordForbidenListCheck
 
-        //не сделан
+
     private static boolean passwordNormalCheck(String passNormal) {
         //пишем код
         return true;
@@ -77,7 +75,7 @@ public class InspectorPass  {
             return false;
         }
     }
-
+    //метод passwordBadCheck - ГОТОВ
     private static boolean passwordBadCheck(String passBad){ //вернем тру если пароль плохой
         //проверка на null
         if (passBad == null) {
@@ -102,6 +100,5 @@ public class InspectorPass  {
         //пишем код
 
     }//end passwordBadCheck
-
 
 }
