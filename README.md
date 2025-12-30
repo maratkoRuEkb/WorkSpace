@@ -30,5 +30,6 @@ DeleteSpaceInString - консольная мини-программа, в те�
 Records - пробовал Records из новой Java<br/>
 Yandex-1  - решал задачку от Yandex №1<br/>
 RuCode25-3  - решал задачку с олимпиады RuCode25 №3<br/>
+technical.city.Parser - парсер рейтинга процессоров с сайта technical.city, Работает но можно улучшить.
 
 Не забывать что тут перенос строки через два пробела или br
